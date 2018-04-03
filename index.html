@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Well-come</title>
+</head>
+<body>
+  <h1>Welcome!</h1>
+  <p><em>You are being redirected to Hacky Website.</em></p>
+  <p>If you are not redirected, click <a href="">here</a>.</p>
+  <h2 id='countdown'>5</h2>
+</body>
+</html>
+
+<script type="text/javascript">
+  window.onload = function () {
+    var i = 5
+    var countdownDisplay = document.getElementById('countdown')
+
+    var counterId = window.setInterval(function() {
+      if(i === 1) { return  window.clearInterval(counterId) }
+      i -= 1
+      countdownDisplay.innerText = i
+    }, 1000)
+
+    window.setTimeout(function(){
+      document.location.assign(document.location.href)
+    }, 6000)
+  }
+</script>
