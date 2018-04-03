@@ -15,7 +15,15 @@
 </html>
 
 <script type="text/javascript">
+  function randomHex() {
+    var hexes = ['A', 'B', 'C', 'D', 'E', 'F', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    var index = Math.floor(Math.random() * hexes.length)
+    return hexes[index]
+  }
   window.onload = function () {
+    var randomColor = '#' + randomHex() + randomHex() + randomHex()
+    document.querySelector('h1').style.color = randomColor
+
     var i = 5
     var countdownDisplay = document.getElementById('countdown')
 
@@ -23,10 +31,10 @@
       if(i === 1) { return  window.clearInterval(counterId) }
       i -= 1
       countdownDisplay.innerText = i
-    }, 1000)
+    }, 2000)
 
     window.setTimeout(function(){
       document.location.assign(document.location.href)
-    }, 6000)
+    }, 10000)
   }
 </script>
