@@ -7,7 +7,7 @@
   <title>Well-come</title>
 </head>
 <body>
-  <h1>Welcome!</h1>
+  <h1 id="welcome"></h1>
   <p><em>You are being redirected to Hacky Website.</em></p>
   <p>If you are not redirected, click <a href="">here</a>.</p>
   <h2 id='countdown'>5</h2>
@@ -20,9 +20,22 @@
     var index = Math.floor(Math.random() * hexes.length)
     return hexes[index]
   }
+
   window.onload = function () {
     var randomColor = '#' + randomHex() + randomHex() + randomHex()
-    document.querySelector('h1').style.color = randomColor
+    var h1 = document.querySelector('h1')
+    var excitementLevel = parseInt(window.localStorage.getItem('excitementLevel')) || 1
+
+    var welcomeMessage = 'Welcome'
+
+    for (let i = 0; i < excitementLevel; i++) {
+      welcomeMessage += '!'
+    }
+
+    window.localStorage.setItem('excitementLevel', excitementLevel + 1)
+
+    h1.style.color = randomColor
+    h1.innerText = welcomeMessage
 
     var i = 5
     var countdownDisplay = document.getElementById('countdown')
